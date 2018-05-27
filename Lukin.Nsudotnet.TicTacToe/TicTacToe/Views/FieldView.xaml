@@ -9,14 +9,14 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <Color x:Key="WinFigureColor">Black</Color>
-        <Grid x:Key="Win1Figure" Name="Win1IsVisible" Margin="5, 5, 5, 5">
+        <Grid x:Key="Win2Figure" Name="Win2IsVisible" Margin="5, 5, 5, 5">
             <Ellipse Width="auto" Height="auto" StrokeThickness="3">
                 <Ellipse.Stroke>
                     <SolidColorBrush Color="{StaticResource WinFigureColor}" />
                 </Ellipse.Stroke>
             </Ellipse>
         </Grid>
-        <Grid x:Key="Win2Figure" Name="Win2IsVisible" Margin="5, 5, 5, 5">
+        <Grid x:Key="Win1Figure" Name="Win1IsVisible" Margin="5, 5, 5, 5">
             <Line X1="0" Y1="0"
                   X2="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}"
                   Y2="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}"

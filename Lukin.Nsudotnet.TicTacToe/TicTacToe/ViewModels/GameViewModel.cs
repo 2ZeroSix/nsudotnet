@@ -26,10 +26,10 @@ namespace TicTacToe.ViewModels
             gameModel.PropertyChanged += (o, e) =>
             {
                 if (e.PropertyName == "CurrentPlayer") NotifyOfPropertyChange(() => CurrentPlayer);
-                if (e.PropertyName == "Winner" && Parent is IConductor parent)
+                if (e.PropertyName == "State" && Parent is IConductor parent)
                 {
                     parent.DeactivateItem(this, true);
-                    parent.ActivateItem(new EndGameViewModel(Winner));
+                    parent.ActivateItem(new EndGameViewModel(State));
                 }
             };
         }

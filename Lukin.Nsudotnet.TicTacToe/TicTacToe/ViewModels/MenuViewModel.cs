@@ -9,7 +9,7 @@ namespace TicTacToe.ViewModels
         public void Start()
         {
             if (Parent is IConductor parent)
-                parent.ActivateItem(new GameViewModel(new GameModel(new Field<Field<Cell>>())));
+                parent.ActivateItem(new GameViewModel(new GameModel(new Field<Field<Field<Cell>>>())));
             
         }
         

@@ -7,10 +7,10 @@ namespace TicTacToe.ViewModels
 {
     public abstract class FieldViewModelBase : Screen
     {
-        public bool Win1IsVisible => _field.Winner == 1;
+        public bool Win1IsVisible => _field.State == State.Player1;
 
-        public bool Win2IsVisible => _field.Winner == 2;
-        public int Winner => 1;
+        public bool Win2IsVisible => _field.State == State.Player2;
+        public State State => _field.State;
         protected readonly IField _field;
 
         public int Col => _field.Col;
@@ -22,7 +22,7 @@ namespace TicTacToe.ViewModels
             {
                 switch (e.PropertyName)
                 {
-                    case "Winner":
+                    case "State":
                         NotifyOfPropertyChange(() => Win1IsVisible);
                         NotifyOfPropertyChange(() => Win2IsVisible);
                         break;

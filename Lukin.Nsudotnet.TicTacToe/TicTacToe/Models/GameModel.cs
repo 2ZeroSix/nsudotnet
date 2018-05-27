@@ -8,11 +8,12 @@ namespace TicTacToe.Models
         {
             field.Parent = this;
             Cells = new List<IField> {field};
+            field.Current = true;
         }
 
-        private int _currentPlayer = 1;
+        private Player _currentPlayer = Player.Player1;
 
-        public int CurrentPlayer
+        public Player CurrentPlayer
         {
             get => _currentPlayer;
             private set
@@ -38,7 +39,7 @@ namespace TicTacToe.Models
             if (parent == null) return;
             foreach (var subField in parent.Cells[cell.Row * 3 + cell.Col].Cells)
             {
-                if (subField.Winner != 0) continue;
+                if (subField.State != 0) continue;
                 parent.Cells[cell.Row * 3 + cell.Col].Current = true;
                 CurrentPlayer = 3 - CurrentPlayer;
                 return;
@@ -48,7 +49,7 @@ namespace TicTacToe.Models
             {
                 foreach (var subField in parent.Cells)
                 {
-                    if (subField.Winner != 0) continue;
+                    if (subField.State != 0) continue;
                     parent.Current = true;
                     CurrentPlayer = 3 - CurrentPlayer;
                     return;
@@ -56,13 +57,14 @@ namespace TicTacToe.Models
 
                 parent = parent.Parent;
             }
+            State = 0;
         }
 
-        public override void recalcWinner(int player)
+        public override void recalcWinner(Player player)
         {
-            if (Cells[0].Winner != 0)
+            if (Cells[0].State != State.Empty)
             {
-                Winner = Cells[0].Winner;
+                State = Cells[0].State;
             }
         }
     }

@@ -22,7 +22,6 @@ namespace TicTacToe.ViewModels
         {
             if (field.Cells == null) return;
             Items = new BindableCollection<FieldViewModelBase>();
-            if (field.Col == 1 && field.Row == 1) field.Current = true;
             foreach (var cell in field.Cells)
             {
                 Items.Add(FieldViewModelFactory.GetFieldViewModel(cell));

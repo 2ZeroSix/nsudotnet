@@ -1,21 +1,25 @@
 ﻿using System;
 using Caliburn.Micro;
+using TicTacToe.Models;
 
 namespace TicTacToe.ViewModels
 {
     public class EndGameViewModel : Screen
     {
         public string Winner { get; set; }
-        public EndGameViewModel(int winner)
+        public EndGameViewModel(State state)
         {
-            if (winner == 0)
+            if (state == State.Draw)
             {
                 Winner = "DRAW";
+            } else if (state == State.Empty)
+            {
+                Winner = "UNKNOWN ERROR";
             }
             else
             {
-                Winner = string.Concat("Player ", winner, " WON");
-            }
+                Winner = string.Concat("Player ", state, " WON");
+            } 
         }
 
         public void Close()

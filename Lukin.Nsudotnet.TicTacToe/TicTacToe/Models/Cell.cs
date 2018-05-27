@@ -25,9 +25,9 @@
             }
         }
 
-        public override void recalcWinner(int player)
+        public override void recalcWinner(Player player)
         {
-            if (Winner == 0) Winner = player;
+            if (State == 0) State = (State) player;
         }
     }
 }

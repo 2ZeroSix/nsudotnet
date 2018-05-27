@@ -8,7 +8,7 @@ namespace TicTacToe.Models
         private int _col;
         private int _row;
         private IField _parent;
-        private int _winner;
+        private State _state;
         private List<IField> _cells;
         private bool _current;
 
@@ -66,17 +66,17 @@ namespace TicTacToe.Models
             }
         }
 
-        public int Winner
+        public State State
         {
-            get => _winner;
+            get => _state;
             set
             {
-                _winner = value;
-                NotifyOfPropertyChange(() => Winner);
+                _state = value;
+                NotifyOfPropertyChange(() => State);
             }
         }
 
-        public abstract void recalcWinner(int player);
+        public abstract void recalcWinner(Player player);
     }
 
 }

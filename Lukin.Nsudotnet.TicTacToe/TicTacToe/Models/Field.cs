@@ -18,16 +18,6 @@ namespace TicTacToe.Models
                 {
                     if (e.PropertyName == "Current") field.Current = Current;
                 };
-//                field.PropertyChanged += (o, e) =>
-//                {
-//                    switch (e.PropertyName)
-//                    {
-//                        case "Current":
-//                            Current = field.Current;
-//                            break;
-//                    }
-//                };
-
             }
         }
 
@@ -35,46 +25,55 @@ namespace TicTacToe.Models
         {
         }
 
-        public override void recalcWinner(int player)
+        public override void recalcWinner(Player player)
         {
-            if (Winner != 0) return;
+            if (State != 0) return;
             for (var x = 0; x < 3; x++)
             for (var y = 0; y < 3; y++)
             {
-                if (Cells[x * 3 + y].Winner != player)
+                if ((int) Cells[x * 3 + y].State != (int) player)
                     break;
                 if (y != 2) continue;
-                Winner = player;
+                State = (State) player;
                 return;
             }
 
             for (var y = 0; y < 3; y++)
             for (var x = 0; x < 3; x++)
             {
-                if (Cells[x * 3 + y].Winner != player)
+                if ((int) Cells[x * 3 + y].State != (int) player)
                     break;
                 if (x != 2) continue;
-                    Winner = player;
+                    State = (State) player;
                 return;
             }
 
             for (var i = 0; i < 3; i++)
             {
-                if (Cells[i * 4].Winner != player)
+                if ((int) Cells[i * 4].State != (int) player)
                     break;
                 if (i != 2) continue;
-                Winner = player;
+                State = (State) player;
                 return;
             }
 
             for (var i = 0; i < 3; i++)
             {
-                if (Cells[i * 2 + 2].Winner != player)
+                if ((int) Cells[i * 2 + 2].State != (int) player)
                     break;
                 if (i != 2) continue;
-                Winner = player;
+                State = (State) player;
                 return;
             }
+            
+            var free = 0;
+            for (var i = 0; i < 9; ++i)
+            {
+                if (Cells[i].State == State.Empty) ++free;
+            }
+
+            if (free == 0)
+                State = State.Draw;
         }
     }
 }

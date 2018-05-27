@@ -11,7 +11,7 @@ namespace TicTacToe.Models
         int Row { get; set; }
         IField Parent { get; set; }
         List<IField> Cells { get; }
-        int Winner { get; set; }
-        void recalcWinner(int player);
+        State State { get; set; }
+        void recalcWinner(Player player);
     }
 }

@@ -78,6 +78,7 @@
     <Compile Include="Models\Field.cs" />
     <Compile Include="Models\FieldBase.cs" />
     <Compile Include="Models\IField.cs" />
+    <Compile Include="Models\State.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="ViewModels\CellViewModel.cs" />
     <Compile Include="ViewModels\EndGameViewModel.cs" />

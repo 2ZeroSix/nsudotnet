@@ -11,7 +11,7 @@ namespace TicTacToe.ViewModels
     public class CellViewModel : FieldViewModelBase
     {
 
-        public bool IsClickable => _field.Current && _field.Winner == 0;
+        public bool IsClickable => _field.Current && _field.State == 0;
 
         public CellViewModel(Cell cell) : base(cell)
         {
