@@ -11,36 +11,37 @@
             <Color x:Key="BorderColor">SaddleBrown</Color>
             <Grid x:Key="Border">
                 <Button x:Name="Click" IsEnabled="{Binding IsClickable}" />
-                <Rectangle Width="auto" Height="auto" StrokeThickness="3">
+                <Rectangle Width="auto" Height="auto" StrokeThickness="2">
                     <Rectangle.Stroke>
                         <SolidColorBrush Color="{StaticResource BorderColor}" />
                     </Rectangle.Stroke>
                 </Rectangle>
             </Grid>
 
-            <Color x:Key="WinFigureColor">Black</Color>
-            <Grid x:Key="Win2Figure" Name="Win2IsVisible" Margin="5, 5, 5, 5">
-                <Ellipse Width="auto" Height="auto" StrokeThickness="3">
+            <Color x:Key="Win1FigureColor">DarkRed</Color>
+            <Color x:Key="Win2FigureColor">DarkBlue</Color>
+            <Grid x:Key="Win2Figure" Name="Win2IsVisible" Margin="3, 3, 3, 3">
+                <Ellipse Width="auto" Height="auto" StrokeThickness="2">
                     <Ellipse.Stroke>
-                        <SolidColorBrush Color="{StaticResource WinFigureColor}" />
+                        <SolidColorBrush Color="{StaticResource Win2FigureColor}" />
                     </Ellipse.Stroke>
                 </Ellipse>
             </Grid>
-            <Grid x:Key="Win1Figure" Name="Win1IsVisible" Margin="5, 5, 5, 5">
+            <Grid x:Key="Win1Figure" Name="Win1IsVisible" Margin="3, 3, 3, 3">
                 <Line X1="0" Y1="0"
                       X2="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}"
                       Y2="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}"
-                      StrokeThickness="3">
+                      StrokeThickness="2">
                     <Line.Stroke>
-                        <SolidColorBrush Color="{StaticResource WinFigureColor}" />
+                        <SolidColorBrush Color="{StaticResource Win1FigureColor}" />
                     </Line.Stroke>
                 </Line>
                 <Line X2="0" Y1="0"
                       X1="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}"
                       Y2="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}"
-                      StrokeThickness="3">
+                      StrokeThickness="2">
                     <Line.Stroke>
-                        <SolidColorBrush Color="{StaticResource WinFigureColor}" />
+                        <SolidColorBrush Color="{StaticResource Win1FigureColor}" />
                     </Line.Stroke>
                 </Line>
             </Grid>

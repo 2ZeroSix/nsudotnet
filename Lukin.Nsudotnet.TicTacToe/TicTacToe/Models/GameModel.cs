@@ -35,18 +35,24 @@ namespace TicTacToe.Models
             }
 
             Cells[0].Current = false;
-            var parent = cell.Parent?.Parent;
-            if (parent == null) return;
-            foreach (var subField in parent.Cells[cell.Row * 3 + cell.Col].Cells)
+            var parent = cell.Parent;
+            if (parent.Parent != null && !(parent.Parent is GameModel))
             {
-                if (subField.State != 0) continue;
-                parent.Cells[cell.Row * 3 + cell.Col].Current = true;
-                CurrentPlayer = 3 - CurrentPlayer;
-                return;
-            }
+                var rowPath = new List<int> {cell.Row};
+                var columnPath = new List<int> {cell.Col};
+                while (parent != null && !(parent.Parent?.Parent is GameModel))
+                {
+                    rowPath.Add(parent.Row);
+                    columnPath.Add(parent.Col);
+                    parent = parent.Parent;
+                }
 
-            while (parent != null)
-            {
+                parent = Cells[0];
+                for (var i = rowPath.Count - 1; i >= 0 ; --i)
+                {
+                    parent = parent.Cells[rowPath[i] * 3 + columnPath[i]];
+                }
+
                 foreach (var subField in parent.Cells)
                 {
                     if (subField.State != 0) continue;
@@ -55,8 +61,27 @@ namespace TicTacToe.Models
                     return;
                 }
 
-                parent = parent.Parent;
+                while (!(parent is GameModel))
+                {
+                    foreach (var subField in parent.Cells)
+                    {
+                        if (subField.State != 0) continue;
+                        parent.Current = true;
+                        CurrentPlayer = 3 - CurrentPlayer;
+                        return;
+                    }
+
+                    parent = parent.Parent;
+                }
             }
+            else
+            {
+                Cells[0].Current = true;
+                CurrentPlayer = 3 - CurrentPlayer;
+                return;
+            }
+
+
             State = 0;
         }
 

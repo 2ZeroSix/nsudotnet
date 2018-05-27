@@ -27,7 +27,7 @@ namespace TicTacToe.Models
 
         public override void recalcWinner(Player player)
         {
-            if (State != 0) return;
+            if (State != State.Empty) return;
             for (var x = 0; x < 3; x++)
             for (var y = 0; y < 3; y++)
             {

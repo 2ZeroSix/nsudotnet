@@ -5,7 +5,7 @@ namespace TicTacToe.ViewModels
 {
         public class GameViewModel : FieldViewModelBase
     {
-        public string CurrentPlayer => "Player " + ((GameModel) _field).CurrentPlayer;
+        public string CurrentPlayer => ((GameModel) _field).CurrentPlayer.ToString();
 
         private FieldViewModelBase _activeItem;
 
@@ -40,6 +40,7 @@ namespace TicTacToe.ViewModels
             if (Parent is IConductor parent)
             {
                 parent.DeactivateItem(this, true);
+                parent.ActivateItem(new EndGameViewModel((State)(3 - ((GameModel) _field).CurrentPlayer)));
             }
         }
     }

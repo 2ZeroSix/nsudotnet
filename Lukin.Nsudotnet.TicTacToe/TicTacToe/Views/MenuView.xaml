@@ -4,23 +4,48 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:TicTacToe"
+             xmlns:viewModels="clr-namespace:TicTacToe.ViewModels"
+
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Grid.RowDefinitions >
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
         <Label Grid.Column="0" Grid.Row="0">TicTacToe</Label>
-        <StackPanel  Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Stretch">
             <Button Template="{StaticResource BtTemplate}" x:Name="Start" Content="Start" />
             <Button Template="{StaticResource BtTemplate}" x:Name="Exit" Content="Exit" />
+            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <RadioButton Name="IsBaby"
+                             Margin="75,10,0,0"
+                             Content="Baby"
+                             GroupName="Difficulty" />
+                <RadioButton Name="IsKid"
+                             Margin="75,10,0,0"
+                             Content="Kid"
+                             GroupName="Difficulty" />
+                <RadioButton Name="IsFreshMan"
+                             Margin="75,10,0,0"
+                             Content="Freshman"
+                             GroupName="Difficulty" />
+                <RadioButton Name="IsPro"
+                             Margin="75,10,0,0"
+                             Content="Pro"
+                             GroupName="Difficulty" />
+                <RadioButton Name="IsInsane"
+                             Margin="75,10,0,0"
+                             Content="Insane"
+                             GroupName="Difficulty" />
+
+            </WrapPanel>
         </StackPanel>
         <Label Grid.Column="2" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right">Lukin Bogdan</Label>
     </Grid>
