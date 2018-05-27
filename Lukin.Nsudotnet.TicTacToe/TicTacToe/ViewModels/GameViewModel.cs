@@ -3,15 +3,14 @@ using TicTacToe.Models;
 
 namespace TicTacToe.ViewModels
 {
-    public class GameViewModel : Conductor<FieldViewModel>
+        public class GameViewModel : Conductor<FieldViewModelBase>
     {
-        private Field<Field<Cell>> _field;
-        public IPlayer player { get; }
-
-        public GameViewModel()
+        private BaseGameModel _game;
+        public int CurrentPlayer;
+        public GameViewModel(BaseGameModel gameModel)
         {
-            _field = new Field<Field<Cell>>();
-            ActiveItem = new FieldViewModel(new Field<Field<Cell>>());
+            _game = gameModel;
+            ActiveItem = FieldViewModelFactory.GetFieldViewModel(_game.Cells[0]);
         }
 
         public void Surrender()

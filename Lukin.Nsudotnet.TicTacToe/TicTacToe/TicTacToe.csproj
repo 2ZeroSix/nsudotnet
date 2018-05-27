@@ -73,17 +73,24 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\BaseGameModel.cs" />
+    <Compile Include="Models\Cell.cs" />
     <Compile Include="Models\Field.cs" />
     <Compile Include="Models\GameModel.cs" />
+    <Compile Include="Models\BaseField.cs" />
     <Compile Include="Models\IField.cs" />
-    <Compile Include="Models\IPlayer.cs" />
-    <Compile Include="Models\Player.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
+    <Compile Include="ViewModels\CellViewModel.cs" />
     <Compile Include="ViewModels\FieldViewModel.cs" />
+    <Compile Include="ViewModels\FieldViewModelBase.cs" />
+    <Compile Include="ViewModels\FieldViewModelFactory.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="Views\AppView.xaml.cs">
       <DependentUpon>AppView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CellView.xaml.cs">
+      <DependentUpon>CellView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FieldView.xaml.cs">
       <DependentUpon>FieldView.xaml</DependentUpon>
@@ -115,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AppView.xaml" />
+    <Page Include="Views\CellView.xaml" />
     <Page Include="Views\FieldView.xaml" />
     <Page Include="Views\GameView.xaml" />
     <Page Include="Views\MenuView.xaml" />

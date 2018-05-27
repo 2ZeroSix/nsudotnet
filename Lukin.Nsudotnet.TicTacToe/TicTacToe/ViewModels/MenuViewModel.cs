@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Caliburn.Micro;
+using TicTacToe.Models;
 
 namespace TicTacToe.ViewModels
 {
@@ -8,7 +9,7 @@ namespace TicTacToe.ViewModels
         public void Start()
         {
             if (Parent is IConductor parent)
-                parent.ActivateItem(new GameViewModel());
+                parent.ActivateItem(new GameViewModel(new GameModel<Field<Field<Cell>>>()));
             
         }
         

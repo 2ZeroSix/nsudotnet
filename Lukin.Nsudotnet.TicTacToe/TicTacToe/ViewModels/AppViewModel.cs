@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using TicTacToe.Models;
 
 namespace TicTacToe.ViewModels
 {
@@ -7,7 +8,8 @@ namespace TicTacToe.ViewModels
         public AppViewModel()
         {
             ActiveItem = new MenuViewModel();
-            
+            ActiveItem = new GameViewModel(new GameModel<Field<Field<Cell>>>());
+//            ActiveItem = new CellViewModel(new Cell());
         }
     }
 }

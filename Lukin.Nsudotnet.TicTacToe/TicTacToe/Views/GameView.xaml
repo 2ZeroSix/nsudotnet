@@ -6,8 +6,19 @@
              xmlns:local="clr-namespace:TicTacToe"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
-        <ContentControl x:Name="ActiveItem" />
-        <Button Template="{StaticResource BtTemplate}" Name="Surrender" Content="Surrender"></Button>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top">Player</TextBlock>
+        <!-- <ContentControl Content="{StaticResource Border}" Grid.Row="1" Grid.Column="0"/> -->
+        <ContentControl x:Name="ActiveItem" Grid.Row="1" Grid.Column="0"/>
+        <Button Template="{StaticResource BtTemplate}" Name="Surrender" Content="Surrender" VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="0"></Button>
+    </Grid>
 </UserControl>

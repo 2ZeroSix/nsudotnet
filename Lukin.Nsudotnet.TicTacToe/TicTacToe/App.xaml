@@ -11,6 +11,7 @@
                 </Border>
             </ControlTemplate>
 
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <local:AppBootstrapper x:Key="Bootstrapper">
