@@ -2,17 +2,18 @@
 
 namespace TicTacToe.ViewModels
 {
-    public class FieldViewModelFactory
+    public static class FieldViewModelFactory
     {
         public static FieldViewModelBase GetFieldViewModel(IField field)
         {
-            if (field.GetType() == typeof(Cell))
+            switch (field)
             {
-                return new CellViewModel(field as Cell);
-            }
-            else
-            {
-                return new FieldViewModel(field);
+                case Cell cell:
+                    return new CellViewModel(cell);
+                case GameModel gameModel:
+                    return new GameViewModel(gameModel);
+                default:
+                    return new FieldViewModel(field);
             }
         }
     }

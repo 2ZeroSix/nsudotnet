@@ -3,16 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:TicTacToe.Views"
-             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:local="clr-namespace:TicTacToe"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <ResourceDictionary>
             <Color x:Key="BorderColor">SaddleBrown</Color>
-            <Grid x:Key="Border" >
-                <Button x:Name="Click" IsEnabled="{Binding IsClickable}" ></Button>
-                <Rectangle Width="auto" Height="auto" StrokeThickness="3" >
+            <Grid x:Key="Border">
+                <Button x:Name="Click" IsEnabled="{Binding IsClickable}" />
+                <Rectangle Width="auto" Height="auto" StrokeThickness="3">
                     <Rectangle.Stroke>
                         <SolidColorBrush Color="{StaticResource BorderColor}" />
                     </Rectangle.Stroke>
@@ -20,33 +19,36 @@
             </Grid>
 
             <Color x:Key="WinFigureColor">Black</Color>
-            <Grid x:Key="Win1" Name="Win1IsVisible">
-                <Ellipse Width="auto" Height="auto" StrokeThickness="3" Margin="3, 3, 3, 3">
+            <Grid x:Key="Win1Figure" Name="Win1IsVisible" Margin="5, 5, 5, 5">
+                <Ellipse Width="auto" Height="auto" StrokeThickness="3">
                     <Ellipse.Stroke>
                         <SolidColorBrush Color="{StaticResource WinFigureColor}" />
                     </Ellipse.Stroke>
                 </Ellipse>
             </Grid>
-            <Grid x:Key="Win2" Name="Win2IsVisible">
-                <Line X1="0" Y1="0" X2="{Binding ActualWidth, ElementName=Grid}"
-                      Y2="{Binding ActualHeight, ElementName=Grid}" StrokeThickness="3" Margin="3, 3, 3, 3">
+            <Grid x:Key="Win2Figure" Name="Win2IsVisible" Margin="5, 5, 5, 5">
+                <Line X1="0" Y1="0"
+                      X2="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}"
+                      Y2="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}"
+                      StrokeThickness="3">
                     <Line.Stroke>
                         <SolidColorBrush Color="{StaticResource WinFigureColor}" />
                     </Line.Stroke>
                 </Line>
-                <Line X2="0" Y1="0" X1="{Binding ActualWidth, ElementName=Grid}"
-                      Y2="{Binding ActualHeight, ElementName=Grid}" StrokeThickness="3" Margin="3, 3, 3, 3">
+                <Line X2="0" Y1="0"
+                      X1="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}"
+                      Y2="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}"
+                      StrokeThickness="3">
                     <Line.Stroke>
                         <SolidColorBrush Color="{StaticResource WinFigureColor}" />
                     </Line.Stroke>
                 </Line>
             </Grid>
-            <Grid x:Key="Win0" />
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid x:Name="Grid" >
-        <ContentControl Content="{StaticResource Border}"/>
-        <ContentControl Content="{StaticResource Win1}"/>
-        <ContentControl Content="{StaticResource Win2}"/>
+    <Grid x:Name="Grid">
+        <ContentControl Content="{StaticResource Border}" />
+        <ContentControl Content="{StaticResource Win1Figure}" />
+        <ContentControl Content="{StaticResource Win2Figure}" />
     </Grid>
 </UserControl>

@@ -8,8 +8,6 @@ namespace TicTacToe.ViewModels
         public AppViewModel()
         {
             ActiveItem = new MenuViewModel();
-            ActiveItem = new GameViewModel(new GameModel<Field<Field<Cell>>>());
-//            ActiveItem = new CellViewModel(new Cell());
         }
     }
 }

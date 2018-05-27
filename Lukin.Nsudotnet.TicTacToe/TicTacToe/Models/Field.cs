@@ -3,10 +3,11 @@ using System.Windows;
 
 namespace TicTacToe.Models
 {
-    public class Field<TField> : Cell where TField : BaseField, new()
+    public class Field<TField> : FieldBase where TField : FieldBase, new()
     {
-        public Field(BaseField parent = null) : base(parent)
+        public Field(FieldBase parent = null)
         {
+            Parent = parent;
             Cells = new List<IField>(9);
             for (var i = 0; i < 3; ++i)
             for (var j = 0; j < 3; ++j)
@@ -15,12 +16,7 @@ namespace TicTacToe.Models
                 Cells.Add(field);
                 PropertyChanged += (o, e) =>
                 {
-                    switch (e.PropertyName)
-                    {
-                        case "Current":
-                            field.Current = Current;
-                            break;
-                    }
+                    if (e.PropertyName == "Current") field.Current = Current;
                 };
 //                field.PropertyChanged += (o, e) =>
 //                {

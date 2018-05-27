@@ -1,8 +1,8 @@
 ﻿namespace TicTacToe.Models
 {
-    public class Cell : BaseField
+    public class Cell : FieldBase
     {
-        public Cell(BaseField parent=null)
+        public Cell(IField parent=null)
         {
             Parent = parent;
         }
@@ -19,7 +19,7 @@
                 gameModel = gameModel.Parent;
             }
 
-            if (gameModel is BaseGameModel model)
+            if (gameModel is GameModel model)
             {
                 model.Click(this);
             }

@@ -3,7 +3,7 @@ using Caliburn.Micro;
 
 namespace TicTacToe.Models
 {
-    public abstract class BaseField : PropertyChangedBase, IField
+    public abstract class FieldBase : PropertyChangedBase, IField
     {
         private int _col;
         private int _row;
@@ -17,7 +17,6 @@ namespace TicTacToe.Models
             get => _current;
             set
             {
-                if (value == _current) return;
                 _current = value;
                 NotifyOfPropertyChange(() => Current);
             }
@@ -72,7 +71,6 @@ namespace TicTacToe.Models
             get => _winner;
             set
             {
-                if (value == _winner) return;
                 _winner = value;
                 NotifyOfPropertyChange(() => Winner);
             }
